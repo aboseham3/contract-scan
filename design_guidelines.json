@@ -1,0 +1,115 @@
+{
+  "theme_and_concept": {
+    "theme": "Dark Mode Default - Electric & Neon (Archetype 7) adapted for Legal Tech",
+    "description": "An unprecedented, tech-forward AI contract analyzer. Bilingual (Arabic/English) with RTL support. The UI should feel like a premium command center—deep obsidian backgrounds with electric cyan accents for technology and high-contrast neon red/orange for risk flagging.",
+    "emotional_tone": "Authoritative, cutting-edge, secure, and intelligent."
+  },
+  "typography": {
+    "rules": [
+      "Use 'Readex Pro' for all headings (H1-H4). It has a modern, tech-forward geometric look that supports both English and Arabic perfectly.",
+      "Use 'IBM Plex Sans Arabic' for all body text, UI labels, and data points. It provides excellent legibility for dense legal text in both languages.",
+      "Headlines (Size > 32px) MUST use tracking-tight.",
+      "Overlines / Labels MUST be Uppercase + Tiny + Wide Spacing.",
+      "Never use Inter, Roboto, or standard defaults."
+    ],
+    "hierarchy": {
+      "H1": "text-4xl sm:text-5xl lg:text-6xl font-black",
+      "H2": "text-2xl sm:text-3xl lg:text-4xl font-bold",
+      "H3": "text-xl sm:text-2xl font-semibold",
+      "H4": "text-lg sm:text-xl font-medium",
+      "Body": "text-base font-normal",
+      "Small": "text-sm font-light text-muted-foreground"
+    },
+    "fonts_to_install": [
+      "Readex Pro",
+      "IBM Plex Sans Arabic"
+    ]
+  },
+  "colors": {
+    "palette": {
+      "background": "#0A0A0B",
+      "foreground": "#FAFAFA",
+      "card": "#121214",
+      "card_foreground": "#FAFAFA",
+      "border": "#27272A",
+      "primary": "#00E5FF",
+      "primary_foreground": "#000000",
+      "secondary": "#1E1E24",
+      "secondary_foreground": "#FAFAFA",
+      "accent": "#00E5FF",
+      "accent_foreground": "#000000",
+      "destructive": "#FF3366",
+      "destructive_foreground": "#FFFFFF",
+      "warning": "#FF9900",
+      "success": "#00E676"
+    },
+    "instructions": "Use deep obsidian (#0A0A0B) as the main canvas. Never use pure black or flat gray. Accent with Electric Cyan (#00E5FF) for primary actions and glowing effects. Use Neon Red (#FF3366) and Warning Orange (#FF9900) specifically for highlighting hidden contract clauses and penalties. Ensure contrast ratios meet APCA standards."
+  },
+  "visual_enhancers": {
+    "glassmorphism": "For sticky headers and floating toolbars, use `backdrop-blur-xl bg-[#0A0A0B]/70 border-b border-white/10`. Add `backdrop-saturate-150`.",
+    "surfaces": "For dashboard cards, use solid backgrounds (`#121214`) with a sharp 1px border (`border-white/10`). Add a subtle neon glow on hover for interactive cards (`hover:shadow-[0_0_15px_rgba(0,229,255,0.15)]`).",
+    "motion": "Use smooth transitions for hover states (`transition-all duration-300 ease-in-out`). Animate risk scores with a count-up effect. Entrance animations for contract clauses should stagger in."
+  },
+  "components_and_layouts": {
+    "landing_page": {
+      "layout": "The 'Tetris' Grid (Mode A) for features. Large asymmetrical sections. Generous spacing (`py-24` or `py-32`).",
+      "hero": "Dark, imposing hero section. Headline should be massive. Add a subtle glowing grid or particle effect in the background.",
+      "pricing": "Bento box style for Free, Single ($3), and Monthly ($20) tiers. Highlight the Monthly tier with 'The Tracing Beam' animated border."
+    },
+    "dashboard": {
+      "layout": "High Density Grid (Mode B). Strict hierarchy. Sidebar for navigation (history, settings). Top strip for remaining credits and upload CTA.",
+      "cards": "Cardless or 1px border style. Very sharp corners (`rounded-none` or `rounded-sm`)."
+    },
+    "analysis_workspace": {
+      "layout": "Split-pane view: Document preview on the left/right (based on RTL), AI Insights on the opposite side.",
+      "insights_panel": "List of clauses categorized by severity (Destructive/Red for penalties/auto-renewal, Warning/Orange for hidden fees, Success/Green for safe).",
+      "upload_zone": "Large drag-and-drop zone with camera scan button, glowing dashed border on hover."
+    }
+  },
+  "rtl_and_bilingual_instructions": {
+    "rules": [
+      "The app MUST support Arabic (RTL) and English (LTR). Use `dir='rtl'` on the HTML tag or main wrapper when Arabic is selected.",
+      "Use logical Tailwind properties like `ms-` (margin-inline-start), `me-`, `ps-`, `pe-`, `border-s`, `border-e` instead of `ml-`, `mr-`, etc., so layouts automatically flip in RTL.",
+      "Provide a language toggle in the header."
+    ]
+  },
+  "images": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1588007374946-c79543903e8a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwxfHxjb250cmFjdCUyMGRvY3VtZW50JTIwYW5hbHlzaXMlMjBnbG93aW5nJTIwbmVvbnxlbnwwfHx8fDE3OTIwNDg0NDl8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract blue and white neon light streaks for the tech-forward hero section background. Use with a heavy opacity overlay (e.g., bg-black/80) so text is readable."
+    },
+    "dashboard_accent": {
+      "url": "https://images.unsplash.com/photo-1720962158789-9389a4f399da?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neSUyMGdsb3dpbmclMjBpbnRlcmZhY2V8ZW58MHx8fHwxNzkyMDQ4NDQ5fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Dark control panel texture, can be used as a subtle background pattern for the pricing or auth sections."
+    }
+  },
+  "icons": "Use `lucide-react`. Provide sharp, tech-oriented icons like `Scan`, `FileText`, `AlertTriangle`, `ShieldAlert`, `CreditCard`.",
+  "required_libraries": [
+    "lucide-react",
+    "framer-motion (for smooth transitions and the tracing beam effect)",
+    "sonner (for toast notifications)",
+    "react-dropzone (for document/image uploads)",
+    "html2pdf.js or jspdf (for PDF export functionality)"
+  ],
+  "testing": "All interactive and key informational elements MUST include a `data-testid` attribute (e.g., `data-testid='upload-document-button'`).",
+  "instructions_to_main_agent": [
+    "Implement a deep dark theme by default, overwriting standard Tailwind config colors with the palette provided.",
+    "Do NOT use pure transparent backgrounds for any surfaces containing text.",
+    "Ensure RTL support is robust. Use Tailwind's logical properties (`ps-`, `me-`, etc.).",
+    "Mock the Stripe payment flow and AI analysis logic, but make the UI look functional and complete.",
+    "Build the split-pane analysis view carefully so the document and the AI warnings are visible side-by-side.",
+    "Do not center-align body text; left-align (or right-align in RTL) for legibility."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not converge toward generic 'AI slop' aesthetics. Use the requested electric/neon dark theme.",
+    "Create depth through layered design elements with z-index hierarchy and 1px borders.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) for sticky navs.",
+    "You MUST NOT apply universal transition (e.g., `transition: all`).",
+    "You MUST NOT center align the app container in CSS.",
+    "Use modern button styles (sharp corners for this tech theme) with interaction animations.",
+    "NEVER use AI assistant Emoji characters like 🤖🧠💭💡.",
+    "Add micro-animations for hover states and transitions.",
+    "Use 2-3x more spacing than feels comfortable for marketing pages.",
+    "Use `sonner` for toast notifications."
+  ]
+}

@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'IBM Plex Sans Arabic', 'Readex Pro', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #0A0A0B;
+    color: #FAFAFA;
+}
+
+h1, h2, h3, h4, .font-display { font-family: 'Readex Pro', sans-serif; }
+
+@layer base {
+  :root {
+    --background: 240 6% 4%;
+    --foreground: 0 0% 98%;
+    --card: 240 7% 7%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 7% 7%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 187 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 240 8% 13%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 8% 13%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 187 100% 50%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 346 100% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 187 100% 50%;
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+}
+
+/* Neon grid background */
+.neon-grid {
+  background-image:
+    linear-gradient(rgba(0,229,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: 0 0;
+}
+
+.cyber-glow {
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.25), inset 0 0 1px rgba(0, 229, 255, 0.4);
+}
+
+.cyber-glow-danger {
+  box-shadow: 0 0 24px rgba(255, 51, 102, 0.3);
+}
+
+.text-cyber {
+  background: linear-gradient(90deg, #00E5FF 0%, #7DFBFF 50%, #00E5FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,229,255,0.08) 50%, transparent 100%);
+  pointer-events: none;
+  animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.btn-cyber {
+  position: relative;
+  background: linear-gradient(135deg, #00E5FF 0%, #00B8CC 100%);
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform 150ms ease, box-shadow 300ms ease;
+  box-shadow: 0 0 0 rgba(0, 229, 255, 0);
+}
+.btn-cyber:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.5);
+}
+
+.border-cyber {
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+/* RTL helpers */
+html[dir="rtl"] body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+
+::selection {
+  background: #00E5FF;
+  color: #000;
+}
+
+/* Fancy scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0A0A0B; }
+::-webkit-scrollbar-thumb { background: #27272A; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #00E5FF; }
+
+@layer base {
+    [data-debug-wrapper="true"] { display: contents !important; }
+}
