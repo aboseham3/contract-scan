@@ -10,3 +10,4 @@ FastAPI + MongoDB; GPT-6 Sol vision via Emergent key (PDF pages rendered to imag
 - P1: Real recurring Stripe subscription (currently one-time $20 grants 6 credits for 30 days); own Stripe live key
 - P1: Hero visual on landing right side
 - P2: Share analysis link, compare two contracts, ask follow-up questions about a contract
+- Jun 2026: Verified Emergent Google sign-in end-to-end (redirect, session exchange, cookie auth, logout cookie clearing fixed). Pending user decision: Saudi payment gateway (Moyasar recommended / Tap / Stripe via supported-country entity).
