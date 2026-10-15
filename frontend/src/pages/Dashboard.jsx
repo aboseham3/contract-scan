@@ -42,6 +42,7 @@ export default function Dashboard() {
       const d = e?.response?.data?.detail;
       if (d === "no_credits") { toast.error(t("no_credits_msg")); navigate("/pricing"); }
       else if (d === "max_pages") toast.error(t("max_3_files"));
+      else if (d === "ai_failed") toast.error(lang === "ar" ? "تعذّر قراءة المستند، جرّب صورة أوضح" : "Couldn't read the document, try a clearer image");
       else toast.error(d || "Error");
     } finally {
       setAnalyzing(false);

@@ -96,7 +96,7 @@ async def get_current_user(request: Request) -> dict:
     if session_token:
         session = await db.user_sessions.find_one({"session_token": session_token}, {"_id": 0})
         if session:
-            expires_at = session.get("expires_at")
+            expires_at = session.get("expires_at") or datetime.now(timezone.utc).isoformat()
             if isinstance(expires_at, str):
                 expires_at = datetime.fromisoformat(expires_at)
             if expires_at.tzinfo is None:
@@ -157,6 +157,8 @@ async def check_and_consume_credit(user: dict) -> dict:
 # ========= Auth Routes =========
 @api_router.post("/auth/register")
 async def register(req: RegisterRequest):
+    if len(req.password) < 6:
+        raise HTTPException(status_code=400, detail="Password must be at least 6 characters")
     existing = await db.users.find_one({"email": req.email})
     if existing:
         raise HTTPException(status_code=400, detail="Email already registered")
@@ -359,7 +361,8 @@ async def analyze_endpoint(request: Request):
     if not files:
         raise HTTPException(status_code=400, detail="No files provided")
     try:
-        images = files_to_images(files)
+        import asyncio
+        images = await asyncio.to_thread(files_to_images, files)
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid file")
     if len(images) > 3:
@@ -378,7 +381,7 @@ async def analyze_endpoint(request: Request):
         result = await analyze_contract_with_ai(images, language)
     except Exception as e:
         logger.exception("Analysis failed")
-        raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)[:200]}")
+        raise HTTPException(status_code=422, detail="ai_failed")
 
     # Consume credit after successful analysis
     await check_and_consume_credit(user)
